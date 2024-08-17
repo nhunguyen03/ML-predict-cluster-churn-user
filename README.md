@@ -64,7 +64,9 @@ The project will support retailer to understand churn users behaviors, predict c
   ![image](https://github.com/user-attachments/assets/d2a7415c-4547-4fc0-80fe-2bc91b1099b3)
 
   + **Strategy**
-    + Cluster 0:
-    + Cluster 1:
-    + Cluster 2:
-    + Cluster 3:
+    + Cluster 0: handle complaints well and quickly. Send email to apologize and express commitment to resolving complaints immeadiately. Because they have orders recently, they are responsive to retention efforts 
+    + Cluster 1: provide continuosly promotions, coupons, cashback intensitive, etc to retain them. They have recent orders, so they are easily reponsive to retention efforts 
+    + Cluster 2: send personalized email-marketing to inform limited-time offers, exclusive offers for only returning customers, etc. Suggest products based on their previous purchase history. The ultimate goal is to encourage them to return.
+    + Cluster 3: send an email with a sincere apology for the negative experience they had. Emphasize that you value their feedback. Assure that the problems have been addressed and improved. Then, suggest products based on their previous purchase history.
+    They do not concern about promotions, they value product quality, service, etc more and they have no orders recently so it is challenge to make them responsive to retention efforts.
+    The thing we can do is quality commitment, improvement.
