@@ -9,7 +9,7 @@ The project will support retailer to understand churn users behaviors, predict c
 3. Company would like to offer targeted promotions for churn user. Segment these churned users into groups based on the behaviors. What are differences among clusters?
 
 ## DETAIL
-- **Dataset** includes a diverse range of information such as customer interactions, preferences, behaviors, etc.
+- ### **Dataset** includes a diverse range of information such as customer interactions, preferences, behaviors, etc.
   + _CustomerID: a unique identifier for each customer._
   + _Churn: indicates whether a customer has stopped using the service (1-churn, 0-not churn)._
   + _Tenure: the length of time (month) a customer has been with the company._
@@ -30,25 +30,37 @@ The project will support retailer to understand churn users behaviors, predict c
   + _OrderCount: the total number of orders placed by the customer._
   + _DaySinceLastOrder: the number of days since the last order._
   + _CashbackAmount: the amount of cashback a customer has received._
-![image](https://github.com/user-attachments/assets/c01fd2d4-5a1c-4400-be54-16039b3f6644)
+  ![image](https://github.com/user-attachments/assets/c01fd2d4-5a1c-4400-be54-16039b3f6644)
 
-- **Process**
-  + Use Pandas, Numpy, Matplotlib, Seaborn, Scipy and ScikitLearn to clean, analyze, visualize, gather insights and build models.
-  - **Question 1**
-    + Apply Random Forest model to select the 6 most important features. Gain insights through data visualization.
-    + [Supervised learning] Feature transforming (encoding, normalization, skewness reduction, fixing imbalance data) and Hyperparameter tuning to choose the best hyperparameter for model.
-    + [Unsupervised learning] Feature transforming (encoding, normalization, skewness reduction, fixing imbalance data, dimension reduction, elbow method, etc) and gain insights through data visualization.
-  
-- **Score RFM**:
-Divide the customers into quartiles for each RFM metric. This means splitting the customers into 5 groups based on their scores.
-Assign scores from 1 to 5 for each metric, where 1 is the lowest quartile and 5 is the highest quartile. The scoring can be interpreted as follows:
-**Recency**: The most recent buyers get a score of 5, while the least recent get a score of 1.
-**Frequency**: The most frequent buyers get a score of 5, while the least frequent get a score of 1.
-**Monetary**: The highest spenders get a score of 5, while the lowest spenders get a score of 1.
+- ### **Question 1**
+  + Apply Random Forest model to select the 6 most important features (high-related to target column Churn).
+  + Gain insights through data visualization.
+    ![image](https://github.com/user-attachments/assets/e499f8fc-1127-41be-a3b5-7ec59ff2972e)
+    ![image](https://github.com/user-attachments/assets/cc46db5c-a743-4806-ae4d-12dad8b31dd9)
+    
+- ### **Question 2: [Supervised learning] Predict churn customers with 91,25% accuracy**
+  + Feature transforming (encoding, normalization, fixing imbalance data)
+    + Encode: convert categorical variables to dummy variables and drop first columns to **advoid multicollinearity**.
+    + Normalization: using **MinMaxScaler** to scale data to a fixed range [0, 1]. Prefer when algorithms that assume feature scales are important, such as neural networks or algorithms using distance metrics.
+    + Fixing imbalance data: by **oversampling SMOTE** to increases the size of the minority class in train datasets.
+      ![image](https://github.com/user-attachments/assets/5c827a59-6c7e-4a16-9054-290ee0abef69)
+      ![image](https://github.com/user-attachments/assets/814153ff-ea0a-49cc-a3eb-2e3b27404b96)
 
-![Customer Segmentation - RFM method](assets/segment_RFM.png)
+  + Apply 3 classification models: KNN, LogisticRegression, RandomForest. Using balanced accuracy score to choose the best model => Random Forest
+  + Tune 5 hyperparameters of Random Forest model by using GridSearchCV and RandomizedSearchCV:
+    + n_estimators, max_depth, min_samples_split, min_samples_leaf, bootstrap
+  => The result is that the balances accuracy score increases from 0.89 to 0.9125
+ 
+- ### **Question 3: [Unsupervised learning] Cluster churn customers & Offer targeted promotions**
+  + Feature transforming (encoding, normalization, dimension reduction, elbow method, etc)
+    + Encode: convert categorical variables to dummy variables and drop first columns to **advoid multicollinearity**.
+    + Normalization: using **MinMaxScaler** to scale data to a fixed range [0, 1]. Prefer when algorithms that assume feature scales are important, such as neural networks or algorithms using distance metrics.
+    + Dimension reduction PCA: select 10 principal components contributing over 90% meaning, reduce complexity of dataset
+    + Elbow method: Because we used KMeans model to cluster churn users, we need to choose the number of clusters through elbow method. From this chart below, we choose k=4 because "Điểm khuỷ tay là điểm mà ở đó tốc độ suy giảm của hàm biến dạng sẽ thay đổi nhiều nhất. Tức là kể từ sau vị trí này thì gia tăng thêm số lượng cụm cũng không giúp hàm biến dạng giảm đáng kể"
+      ![image](https://github.com/user-attachments/assets/66c2e37c-cb75-4d51-8f9c-648b72c28319)
 
-## STRATEGY
-![Customer Segmentation - RFM method](assets/result_segmen_RFM.png)
+  + Gain insights through data visualization.
+  ![image](https://github.com/user-attachments/assets/d2a7415c-4547-4fc0-80fe-2bc91b1099b3)
 
-![Strategy for Each Segmentation](assets/strategy_segment.png)
+  + **Strategy**
+??
