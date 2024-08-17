@@ -55,12 +55,16 @@ The project will support retailer to understand churn users behaviors, predict c
   + Feature transforming (encoding, normalization, dimension reduction, elbow method, etc)
     + Encode: convert categorical variables to dummy variables and drop first columns to **advoid multicollinearity**.
     + Normalization: using **MinMaxScaler** to scale data to a fixed range [0, 1]. Prefer when algorithms that assume feature scales are important, such as neural networks or algorithms using distance metrics.
-    + Dimension reduction PCA: select 10 principal components contributing over 90% meaning, reduce complexity of dataset
-    + Elbow method: Because we used KMeans model to cluster churn users, we need to choose the number of clusters through elbow method. From this chart below, we choose k=4 because "Điểm khuỷ tay là điểm mà ở đó tốc độ suy giảm của hàm biến dạng sẽ thay đổi nhiều nhất. Tức là kể từ sau vị trí này thì gia tăng thêm số lượng cụm cũng không giúp hàm biến dạng giảm đáng kể"
+    + Dimension reduction **PCA**: select 10 principal components contributing over 90% meaning, reduce complexity of dataset
+    + **Elbow method**: Because we used KMeans model to cluster churn users, we need to choose the number of clusters through elbow method. From this chart below, we choose k=4 because "Điểm khuỷ tay là điểm mà ở đó tốc độ suy giảm của hàm biến dạng sẽ thay đổi nhiều nhất. Tức là kể từ sau vị trí này thì gia tăng thêm số lượng cụm cũng không giúp hàm biến dạng giảm đáng kể"
       ![image](https://github.com/user-attachments/assets/66c2e37c-cb75-4d51-8f9c-648b72c28319)
-
+      https://phamdinhkhanh.github.io/deepai-book/ch_ml/KMeans.html
+      
   + Gain insights through data visualization.
   ![image](https://github.com/user-attachments/assets/d2a7415c-4547-4fc0-80fe-2bc91b1099b3)
 
   + **Strategy**
-??
+    + Cluster 0:
+    + Cluster 1:
+    + Cluster 2:
+    + Cluster 3:
